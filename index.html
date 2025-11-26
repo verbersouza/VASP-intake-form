@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VASP Legal Services - Client Intake</title>
+    <title>Brazilian VASP Legal Intake — Professional Data Collection</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fafafa; 
+            color: #2c2c2c; 
+            line-height: 1.6; 
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #fafafa;
-            color: #2c2c2c;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; }
+        
         /* Header */
         .header {
             background: white;
@@ -32,407 +23,95 @@
             top: 0;
             z-index: 100;
         }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        /* Progress Indicator */
-        .progress-bar {
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 1.5rem 2rem;
-        }
-
-        .progress-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .progress-steps {
-            display: flex;
-            gap: 2rem;
-            flex: 1;
-        }
-
-        .progress-step {
-            font-size: 0.75rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-
-        .progress-step.active {
-            color: #1a1a1a;
-        }
-
-        .progress-step.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1.5rem;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #1a1a1a;
-        }
-
-        .progress-indicator {
-            font-size: 0.75rem;
-            color: #999;
-            font-family: 'Courier New', monospace;
-        }
-
+        .title { font-size: 1.5rem; font-weight: 300; color: #1a1a1a; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+        .subtitle { font-size: 0.85rem; color: #666; line-height: 1.5; }
+        
+        /* Progress Bar */
+        .progress-bar { background: white; border-bottom: 1px solid #e0e0e0; padding: 1.5rem 2rem; }
+        .progress-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .progress-steps { display: flex; gap: 2rem; flex: 1; }
+        .progress-step { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 0.5px; position: relative; cursor: pointer; }
+        .progress-step.active { color: #1a1a1a; }
+        .progress-step.active::after { content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 2px; background: #1a1a1a; }
+        .progress-indicator { font-size: 0.75rem; color: #999; font-family: 'Courier New', monospace; }
+        
         /* Main Content */
-        .main-content {
-            padding: 3rem 2rem;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
+        .main-content { padding: 3rem 2rem; }
+        .section { display: none; }
+        .section.active { display: block; }
+        
         /* Form Card */
-        .form-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            padding: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .section-number {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: #1a1a1a;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.3px;
-        }
-
-        .section-description {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.6;
-        }
-
+        .form-card { background: white; border: 1px solid #e0e0e0; padding: 3rem; margin-bottom: 2rem; }
+        .section-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f0f0f0; }
+        .section-number { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 0.5rem; }
+        .section-title { font-size: 1.3rem; font-weight: 300; color: #1a1a1a; margin-bottom: 0.75rem; letter-spacing: -0.3px; }
+        .section-legal-ref { font-size: 0.7rem; color: #999; font-family: 'Courier New', monospace; margin-top: 0.5rem; }
+        .section-description { font-size: 0.85rem; color: #666; line-height: 1.6; }
+        
         /* Form Groups */
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.85rem;
-            color: #1a1a1a;
-            margin-bottom: 0.75rem;
-            font-weight: 400;
-        }
-
-        .form-label-required::after {
-            content: '*';
-            color: #999;
-            margin-left: 0.25rem;
-        }
-
-        .form-description {
-            font-size: 0.75rem;
-            color: #999;
-            margin-bottom: 0.75rem;
-            line-height: 1.5;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #e0e0e0;
-            background: white;
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            font-family: inherit;
-            transition: border-color 0.2s ease;
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: #1a1a1a;
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-input::placeholder {
-            color: #ccc;
-        }
-
+        .form-group { margin-bottom: 2rem; }
+        .form-label { display: block; font-size: 0.85rem; color: #1a1a1a; margin-bottom: 0.75rem; font-weight: 400; }
+        .form-label-required::after { content: '*'; color: #cc0000; margin-left: 0.25rem; }
+        .form-description { font-size: 0.75rem; color: #999; margin-bottom: 0.75rem; line-height: 1.5; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e0e0e0; background: white; font-size: 0.9rem; color: #1a1a1a; font-family: inherit; transition: border-color 0.2s ease; }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #1a1a1a; }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-input::placeholder { color: #ccc; }
+        
         /* Radio/Checkbox Groups */
-        .radio-group,
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .radio-option,
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: #fafafa;
-            border: 1px solid #e8e8e8;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .radio-option:hover,
-        .checkbox-option:hover {
-            background: white;
-            border-color: #d0d0d0;
-        }
-
-        .radio-option.selected,
-        .checkbox-option.selected {
-            background: white;
-            border-color: #1a1a1a;
-        }
-
-        .radio-option input,
-        .checkbox-option input {
-            margin-right: 1rem;
-        }
-
-        .option-content {
-            flex: 1;
-        }
-
-        .option-title {
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            margin-bottom: 0.25rem;
-        }
-
-        .option-description {
-            font-size: 0.75rem;
-            color: #999;
-        }
-
+        .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        .radio-option, .checkbox-option { display: flex; align-items: center; padding: 1rem; background: #fafafa; border: 1px solid #e8e8e8; cursor: pointer; transition: all 0.2s ease; }
+        .radio-option:hover, .checkbox-option:hover { background: white; border-color: #d0d0d0; }
+        .radio-option.selected, .checkbox-option.selected { background: white; border-color: #1a1a1a; }
+        .radio-option input, .checkbox-option input { margin-right: 1rem; }
+        .option-content { flex: 1; }
+        .option-title { font-size: 0.9rem; color: #1a1a1a; margin-bottom: 0.25rem; }
+        .option-description { font-size: 0.75rem; color: #999; }
+        
         /* Grid Layout */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .form-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .form-grid,
-            .form-grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .form-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 768px) { .form-grid, .form-grid-3 { grid-template-columns: 1fr; } }
+        
         /* Navigation Buttons */
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            padding-top: 2rem;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .btn {
-            padding: 0.75rem 2rem;
-            border: 1px solid #e0e0e0;
-            background: white;
-            font-size: 0.85rem;
-            color: #1a1a1a;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 400;
-        }
-
-        .btn:hover {
-            background: #fafafa;
-        }
-
-        .btn-primary {
-            background: #1a1a1a;
-            color: white;
-            border-color: #1a1a1a;
-        }
-
-        .btn-primary:hover {
-            background: #2c2c2c;
-            border-color: #2c2c2c;
-        }
-
-        .btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
+        .form-navigation { display: flex; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 1px solid #f0f0f0; }
+        .btn { padding: 0.75rem 2rem; border: 1px solid #e0e0e0; background: white; font-size: 0.85rem; color: #1a1a1a; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 400; }
+        .btn:hover { background: #fafafa; }
+        .btn-primary { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+        .btn-primary:hover { background: #2c2c2c; border-color: #2c2c2c; }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        
         /* Info Box */
-        .info-box {
-            background: #f8f8f8;
-            border-left: 2px solid #e0e0e0;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .info-box-title {
-            font-size: 0.8rem;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .info-box-text {
-            font-size: 0.75rem;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Summary View */
-        .summary-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .summary-section {
-            background: #fafafa;
-            border: 1px solid #e8e8e8;
-            padding: 1.5rem;
-        }
-
-        .summary-section-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin-bottom: 1rem;
-        }
-
-        .summary-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-
-        .summary-label {
-            font-size: 0.8rem;
-            color: #999;
-        }
-
-        .summary-value {
-            font-size: 0.85rem;
-            color: #1a1a1a;
-        }
-
-        /* Status Indicators */
-        .status-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid;
-            margin-right: 0.5rem;
-        }
-
-        .status-badge.critical {
-            background: #fff5f5;
-            border-color: #ffdddd;
-            color: #cc0000;
-        }
-
-        .status-badge.attention {
-            background: #fffdf5;
-            border-color: #ffe8cc;
-            color: #996600;
-        }
-
-        .status-badge.ok {
-            background: #f5fff5;
-            border-color: #ddffdd;
-            color: #006600;
-        }
-
-        /* Loading State */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem;
-        }
-
-        .loading-text {
-            font-size: 0.85rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .info-box { background: #f8f8f8; border-left: 2px solid #1a1a1a; padding: 1.5rem; margin: 1.5rem 0; }
+        .info-box-title { font-size: 0.8rem; color: #1a1a1a; margin-bottom: 0.5rem; font-weight: 500; }
+        .info-box-text { font-size: 0.75rem; color: #666; line-height: 1.6; }
+        .info-box.warning { background: #fffbf0; border-left-color: #f0ad4e; }
+        .info-box.critical { background: #fff5f5; border-left-color: #cc0000; }
+        
+        /* Auto Date Display */
+        .auto-date { display: inline-block; font-size: 0.75rem; color: #0066cc; background: #f0f8ff; padding: 0.5rem 1rem; margin: 0.5rem 0; border-left: 3px solid #0066cc; font-family: 'Courier New', monospace; }
+        
+        /* Status Badges */
+        .status-badge { display: inline-block; padding: 0.25rem 0.75rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid; margin-left: 0.5rem; }
+        .status-badge.critical { background: #fff5f5; border-color: #ffdddd; color: #cc0000; }
+        .status-badge.legal-ref { background: #f8f8f8; border-color: #f0f0f0; color: #999; font-family: 'Courier New', monospace; }
+        
+        /* Question Table */
+        .question-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .question-row { border-bottom: 1px solid #f0f0f0; }
+        .question-cell { padding: 1.5rem 0; }
+        .question-number { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 0.5rem; }
+        .question-title { font-size: 0.9rem; color: #1a1a1a; margin-bottom: 0.5rem; font-weight: 400; }
+        .question-context { font-size: 0.75rem; color: #666; margin-bottom: 0.75rem; line-height: 1.6; }
     </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="header-content">
-            <div class="title">VASP Legal Services — Client Intake Form</div>
+        <div class="header-content container">
+            <div class="title">Brazilian VASP (PSAV) Legal Intake Form — Optimized for Legal Opinion</div>
             <div class="subtitle">
-                Comprehensive regulatory assessment for Virtual Asset Service Providers seeking Brazilian Central Bank authorization under Resolutions 519/520/521 (2025)
+                Structured data collection for BCB authorization under Resolutions 519/520/521 (2025) | All responses generate database for legal analysis
             </div>
         </div>
     </div>
@@ -441,13 +120,15 @@
     <div class="progress-bar">
         <div class="progress-content">
             <div class="progress-steps">
-                <div class="progress-step active" id="step-1-label">Corporate Structure</div>
-                <div class="progress-step" id="step-2-label">Operational Model</div>
-                <div class="progress-step" id="step-3-label">Compliance & Controls</div>
-                <div class="progress-step" id="step-4-label">Review & Submit</div>
+                <div class="progress-step active" id="step-1" onclick="navigateSection(1)">Corporate & Legal</div>
+                <div class="progress-step" id="step-2" onclick="navigateSection(2)">Capital & Fit/Proper</div>
+                <div class="progress-step" id="step-3" onclick="navigateSection(3)">Operations & Custody</div>
+                <div class="progress-step" id="step-4" onclick="navigateSection(4)">Compliance & AML</div>
+                <div class="progress-step" id="step-5" onclick="navigateSection(5)">Transition Regime</div>
+                <div class="progress-step" id="step-6" onclick="navigateSection(6)">Review & Submit</div>
             </div>
             <div class="progress-indicator">
-                <span id="current-step">01</span> / 04
+                <span id="current-step-num">01</span> / 06
             </div>
         </div>
     </div>
@@ -456,709 +137,1128 @@
     <div class="main-content">
         <div class="container">
             
-            <!-- Section 1: Corporate Structure -->
+            <!-- SECTION 1: Corporate Identity & Legal Foundation -->
             <div class="section active" id="section-1">
                 <div class="form-card">
                     <div class="section-header">
-                        <div class="section-number">Section 01/04</div>
-                        <div class="section-title">Corporate Structure & Legal Entity</div>
+                        <div class="section-number">Section 01 / 06</div>
+                        <div class="section-title">Corporate Identity, Authorization & Legal Foundation</div>
+                        <div class="section-legal-ref">Res. BCB 519/520 (2025)</div>
                         <div class="section-description">
-                            Establish the legal foundation and jurisdictional positioning of your VASP operation. This section maps corporate architecture, ownership structures, and existing regulatory authorizations.
+                            Fundamental corporate structure, jurisdictional positioning, and operational status determination
                         </div>
-                    </div>
-
-                    <!-- Company Identification -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Legal Entity Name</label>
-                        <input type="text" class="form-input" id="companyName" placeholder="Full legal name as registered">
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label form-label-required">Jurisdiction of Incorporation</label>
-                            <select class="form-select" id="jurisdiction">
-                                <option value="">Select jurisdiction</option>
-                                <option value="BR">Brazil</option>
-                                <option value="UY">Uruguay</option>
-                                <option value="AR">Argentina</option>
-                                <option value="OTHER">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label form-label-required">Tax ID / Registration Number</label>
-                            <input type="text" class="form-input" id="taxId" placeholder="CNPJ, CUIT, or equivalent">
-                        </div>
-                    </div>
-
-                    <!-- Group Structure -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Corporate Structure</label>
-                        <div class="form-description">
-                            Define whether the entity operates as a standalone entity or as part of a corporate group
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="structure" value="standalone">
-                                <div class="option-content">
-                                    <div class="option-title">Standalone Entity</div>
-                                    <div class="option-description">Single legal entity with no parent or subsidiaries</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="structure" value="subsidiary">
-                                <div class="option-content">
-                                    <div class="option-title">Subsidiary</div>
-                                    <div class="option-description">Operating entity controlled by parent company/holding</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="structure" value="group">
-                                <div class="option-content">
-                                    <div class="option-title">Group with Subsidiaries</div>
-                                    <div class="option-description">Parent entity with operational subsidiaries in multiple jurisdictions</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Current Operations -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Current Brazilian Operations</label>
-                        <div class="form-description">
-                            Critical: Determines regulatory pathway under BCB transition rules (Art. 22-24, Res. 520)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="brazilOps" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">No Current Operations</div>
-                                    <div class="option-description">New market entry — standard authorization process (Res. 519)</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="brazilOps" value="active">
-                                <div class="option-content">
-                                    <div class="option-title">Currently Active</div>
-                                    <div class="option-description">Operating as of Feb 2026 — 270-day transition window applies</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="brazilOps" value="foreign">
-                                <div class="option-content">
-                                    <div class="option-title">Foreign Entity Operating in Brazil</div>
-                                    <div class="option-description">Non-Brazilian entity serving Brazilian clients — must transfer operations (Art. 23)</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Existing Licenses -->
-                    <div class="form-group">
-                        <label class="form-label">Existing VASP Licenses</label>
-                        <div class="form-description">
-                            List all current virtual asset service provider authorizations in any jurisdiction
-                        </div>
-                        <textarea class="form-textarea" id="licenses" placeholder="Example: Argentina CNV PSAV #52 (July 2024), Cayman VASP License #xxx..."></textarea>
                     </div>
 
                     <div class="info-box">
-                        <div class="info-box-title">Transition Regime — Critical Dates</div>
+                        <div class="info-box-title">📅 Regulatory Deadlines (Auto-Calculated)</div>
                         <div class="info-box-text">
-                            <strong>February 2, 2026:</strong> Resolutions 519/520 enter into force<br>
-                            <strong>270 days from entry:</strong> Deadline for existing operators to regularize or cease Brazilian operations (Art. 22)<br>
-                            <strong>Foreign entities (Art. 23):</strong> Must transfer operations to Brazilian entity or authorized institution within 270 days
+                            <strong>Resolutions Entry:</strong> <span id="date-entry"></span><br>
+                            <strong>Transition Deadline (270 days):</strong> <span id="date-transition"></span><br>
+                            <strong>Travel Rule Stage I (National - 365 days):</strong> <span id="date-travel1"></span><br>
+                            <strong>Travel Rule Stage II (International - 730 days):</strong> <span id="date-travel2"></span><br>
+                            <strong>Foreign VASP Veto Effective:</strong> <span id="date-veto"></span>
                         </div>
                     </div>
 
-                    <!-- Navigation -->
+                    <table class="question-table">
+                        <!-- Q1.1 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.1</div>
+                                <div class="question-title">Proposed Legal Entity Name and Tax ID (CNPJ)</div>
+                                <div class="form-grid">
+                                    <input type="text" class="form-input" id="q1-1-name" data-field="legalEntityName" placeholder="Full legal name">
+                                    <input type="text" class="form-input" id="q1-1-cnpj" data-field="cnpj" placeholder="00.000.000/0000-00">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q1.2 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.2
+                                    <span class="status-badge legal-ref">Art. 499(I), 507</span>
+                                </div>
+                                <div class="question-title">Corporate Structure & Capital Realization</div>
+                                <div class="question-context">
+                                    Legal entity type and confirmation that capital is/will be fully realized in Brazilian currency (moeda corrente)
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-2" value="ltda" data-field="corporateStructure">
+                                        <div class="option-content">
+                                            <div class="option-title">Limited Company (Ltda)</div>
+                                            <div class="option-description">Capital fully realized in moeda corrente</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-2" value="sa" data-field="corporateStructure">
+                                        <div class="option-content">
+                                            <div class="option-title">Corporation (S.A.)</div>
+                                            <div class="option-description">Capital fully realized in moeda corrente</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q1.3 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.3
+                                    <span class="status-badge legal-ref">Art. 477(II), 433</span>
+                                </div>
+                                <div class="question-title">Operational Headquarters (Sede) — Exclusive Use Requirement</div>
+                                <div class="question-context">
+                                    Headquarters must be located in Brazilian territory with effective and exclusive use by the institution
+                                </div>
+                                <input type="text" class="form-input" id="q1-3-address" data-field="headquartersAddress" placeholder="Complete address" style="margin-bottom: 1rem;">
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-3" value="exclusive" data-field="exclusiveUse">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Exclusive use confirmed</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-3" value="non-exclusive" data-field="exclusiveUse">
+                                        <div class="option-content">
+                                            <div class="option-title">No — Shared space (may require justification)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q1.4 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.4</div>
+                                <div class="question-title">Business Plan & Economic-Financial Viability</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-4" value="prepared" data-field="businessPlan">
+                                        <div class="option-content">
+                                            <div class="option-title">Detailed business plan prepared and available for BCB</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-4" value="in-progress" data-field="businessPlan">
+                                        <div class="option-content">
+                                            <div class="option-title">In development</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q1.5 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.5
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 88</span>
+                                </div>
+                                <div class="question-title">Legal Status — Transition Regime Applicability</div>
+                                <div class="question-context">
+                                    Was the entity performing VASP activities in Brazil before February 2, 2026? This determines if Art. 88 transition regime applies with enhanced reporting obligations.
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-5" value="new" data-field="transitionStatus">
+                                        <div class="option-content">
+                                            <div class="option-title">No Current Operations — New Market Entry</div>
+                                            <div class="option-description">Standard authorization process</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-5" value="active" data-field="transitionStatus">
+                                        <div class="option-content">
+                                            <div class="option-title">Currently Active — Operating before Feb 2, 2026</div>
+                                            <div class="option-description">Transition regime applies: 270-day deadline + daily/monthly reporting</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-5" value="foreign" data-field="transitionStatus">
+                                        <div class="option-content">
+                                            <div class="option-title">Foreign Entity — Non-Brazilian serving BR market</div>
+                                            <div class="option-description">Must transfer operations to Brazilian entity within 270 days</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q1.6 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q1.6
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 4, 484(I-II) Res. 520</span>
+                                </div>
+                                <div class="question-title">VASP Modality Classification</div>
+                                <div class="question-context">
+                                    <strong>Note:</strong> Intermediary and Custodian modalities are mutually exclusive unless classified as Broker.<br>
+                                    Capital requirements calculated per Res. Conjunta CMN/BCB nº 14/2025 (Art. 9º-10º)
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-6" value="intermediary" data-field="vaspModality">
+                                        <div class="option-content">
+                                            <div class="option-title">Intermediária de Ativos Virtuais (Intermediary Only)</div>
+                                            <div class="option-description" id="capital-intermediary">Loading capital requirements...</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-6" value="custodian" data-field="vaspModality">
+                                        <div class="option-content">
+                                            <div class="option-title">Custodiante de Ativos Virtuais (Custodian Only)</div>
+                                            <div class="option-description" id="capital-custodian">Loading capital requirements...</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q1-6" value="broker" data-field="vaspModality">
+                                        <div class="option-content">
+                                            <div class="option-title">Corretora de Ativos Virtuais (Broker — Intermediation + Custody)</div>
+                                            <div class="option-description" id="capital-broker">Loading capital requirements...</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
                     <div class="form-navigation">
                         <button class="btn" disabled>Previous</button>
-                        <button class="btn btn-primary" onclick="nextSection(2)">Continue to Operational Model</button>
+                        <button class="btn btn-primary" onclick="navigateSection(2)">Continue to Section 2</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 2: Operational Model -->
+            <!-- SECTION 2: Ownership, Capital & Fit and Proper -->
             <div class="section" id="section-2">
                 <div class="form-card">
                     <div class="section-header">
-                        <div class="section-number">Section 02/04</div>
-                        <div class="section-title">Operational Model & Service Architecture</div>
-                        <div class="section-description">
-                            Define core VASP activities, custody arrangements, intermediation structure, and third-party dependencies. This determines regulatory classification and capital requirements.
-                        </div>
+                        <div class="section-number">Section 02 / 06</div>
+                        <div class="section-title">Ownership, Capital & Fit and Proper</div>
+                        <div class="section-legal-ref">Res. BCB 519 (2025)</div>
                     </div>
 
-                    <!-- VASP Modality -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Intended VASP Classification (Art. 4-9, Res. 520)</label>
-                        <div class="form-description">
-                            Select all applicable modalities — combined operations are permitted except Intermediary + Custodian (Art. 4, §2º)
-                        </div>
-                        <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="modality" value="intermediary">
-                                <div class="option-content">
-                                    <div class="option-title">Intermediária de Ativos Virtuais</div>
-                                    <div class="option-description">
-                                        Buy/sell/exchange on behalf of clients — Min. capital R$ 2M, PL R$ 3M (Art. 6)
-                                    </div>
+                    <table class="question-table">
+                        <!-- Q2.1 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q2.1
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 429(II)</span>
                                 </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="modality" value="custodian">
-                                <div class="option-content">
-                                    <div class="option-title">Custodiante de Ativos Virtuais</div>
-                                    <div class="option-description">
-                                        Custody services only — Min. capital R$ 5M, PL R$ 10M (Art. 7, §4º)
-                                    </div>
+                                <div class="question-title">Lawful Origin of Funds</div>
+                                <div class="question-context">
+                                    All capital and qualified participation funds must have documented lawful origin
                                 </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="modality" value="broker">
-                                <div class="option-content">
-                                    <div class="option-title">Corretora de Ativos Virtuais</div>
-                                    <div class="option-description">
-                                        Full-service broker (intermediation + custody) — Min. capital R$ 10M, PL R$ 20M (Art. 9)
-                                    </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-1" value="yes-documented" data-field="lawfulOrigin">
+                                        <div class="option-content">
+                                            <div class="option-title">Fully documented and available for BCB review</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-1" value="partial" data-field="lawfulOrigin">
+                                        <div class="option-content">
+                                            <div class="option-title">Partial documentation — gaps identified</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-1" value="no" data-field="lawfulOrigin">
+                                        <div class="option-content">
+                                            <div class="option-title">Not documented (BLOCKING ISSUE)</div>
+                                        </div>
+                                    </label>
                                 </div>
-                            </label>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
 
-                    <!-- Custody Model -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Custody Operational Model</label>
-                        <div class="form-description">
-                            Critical for regulatory compliance — segregation requirements differ by model (Art. 29, 30, 73-78)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="custodyModel" value="self">
-                                <div class="option-content">
-                                    <div class="option-title">Self-Custody (In-House)</div>
-                                    <div class="option-description">
-                                        Direct control of private keys — requires full compliance with Art. 73-78 (segregation, proof-of-reserves, biennial audit)
-                                    </div>
+                        <!-- Q2.2 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q2.2</div>
+                                <div class="question-title">Express Tax & Background Check Authorization</div>
+                                <div class="question-context">
+                                    Controllers and Administrators must authorize BCB to access tax returns (last 3 years) and consult public/private databases for Fit and Proper review
                                 </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="custodyModel" value="third-party">
-                                <div class="option-content">
-                                    <div class="option-title">Third-Party Custodian</div>
-                                    <div class="option-description">
-                                        Outsourced to licensed custodian — must meet Art. 83 requirements (Brazilian or foreign with representation)
-                                    </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-2" value="yes" data-field="backgroundAuthorization">
+                                        <div class="option-content">
+                                            <div class="option-title">Authorization confirmed for all key personnel</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-2" value="no" data-field="backgroundAuthorization">
+                                        <div class="option-content">
+                                            <div class="option-title">Not yet obtained</div>
+                                        </div>
+                                    </label>
                                 </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="custodyModel" value="hybrid">
-                                <div class="option-content">
-                                    <div class="option-title">Hybrid Model</div>
-                                    <div class="option-description">
-                                        Combination of self-custody (hot wallets for liquidity) + third-party (cold storage) — most complex compliance structure
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="custodyModel" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">No Custody Services</div>
-                                    <div class="option-description">
-                                        Pure intermediary model — users retain custody of their own assets
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
 
-                    <!-- Segregation Implementation -->
-                    <div class="form-group" id="segregation-question">
-                        <label class="form-label form-label-required">Asset Segregation Status (Art. 29-30, 78)</label>
-                        <div class="form-description">
-                            Mandatory for all VASPs holding client assets — separate wallets for client vs. proprietary funds
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="segregation" value="implemented">
-                                <div class="option-content">
-                                    <div class="option-title">Fully Implemented</div>
-                                    <div class="option-description">Documented policy, separate wallets, proof-of-reserves mechanism operational</div>
+                        <!-- Q2.3 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q2.3
+                                    <span class="status-badge legal-ref">Art. 500(III), 501(e)</span>
                                 </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="segregation" value="partial">
-                                <div class="option-content">
-                                    <div class="option-title">Partially Implemented</div>
-                                    <div class="option-description">Technical infrastructure exists but policy documentation incomplete</div>
+                                <div class="question-title">Minimum Required Administrators</div>
+                                <div class="question-context">
+                                    VASP must appoint at least three Directors/Administrators, including one designated for Cybersecurity Policy
                                 </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="segregation" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">Not Implemented</div>
-                                    <div class="option-description">Critical gap — must be addressed before authorization</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-3" value="yes" data-field="minAdministrators">
+                                        <div class="option-content">
+                                            <div class="option-title">3+ Administrators appointed (incl. Cybersecurity Director)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q2-3" value="no" data-field="minAdministrators">
+                                        <div class="option-content">
+                                            <div class="option-title">Not yet appointed</div>
+                                        </div>
+                                    </label>
                                 </div>
-                            </label>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
 
-                    <!-- Intermediation Model -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Intermediation/Exchange Model</label>
-                        <div class="form-description">
-                            How trades are executed when users buy/sell/swap virtual assets
-                        </div>
-                        <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="exchange" value="liquidity-providers">
-                                <div class="option-content">
-                                    <div class="option-title">External Liquidity Providers</div>
-                                    <div class="option-description">Contracts with exchanges, OTC desks, market makers (Art. 2º, X-XIV)</div>
+                        <!-- Q2.4 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q2.4
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 450(I-V)</span>
                                 </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="exchange" value="matched-orders">
-                                <div class="option-content">
-                                    <div class="option-title">Matched Order Book</div>
-                                    <div class="option-description">Pure intermediary — matches buy/sell orders between platform users</div>
+                                <div class="question-title">Reputational/Integrity Review — Disqualifying Events</div>
+                                <div class="question-context">
+                                    Are any Controllers, Qualified Holders, or Administrators subject to disqualifying events?
                                 </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="exchange" value="principal">
-                                <div class="option-content">
-                                    <div class="option-title">Principal Dealing (Proprietary Trading)</div>
-                                    <div class="option-description">VASP trades from own inventory — requires additional capital allocation</div>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="criminal" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">Criminal proceedings (financial system crimes)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="aml" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">AML/terrorism financing investigations</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="unauthorized" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">Previous unauthorized operation of regulated institution</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="insolvency" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">Bankruptcy/insolvency within last 5 years</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="sanctions" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">Administrative sanctions from regulators (CVM, BCB, SUSEP, foreign)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q2-4" value="none" data-field="disqualifyingEvents">
+                                        <div class="option-content">
+                                            <div class="option-title">None applicable — Clean background for all key personnel</div>
+                                        </div>
+                                    </label>
                                 </div>
-                            </label>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <!-- Fiat On/Off Ramp -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Fiat Currency Integration (On/Off Ramp)</label>
-                        <div class="form-description">
-                            Payment service providers enabling BRL deposits/withdrawals — must comply with Art. 28
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="fiat" value="licensed-psp">
-                                <div class="option-content">
-                                    <div class="option-title">Licensed PSP Integration</div>
-                                    <div class="option-description">Banking-as-a-Service from BCB-authorized payment institution (Art. 28, §3º)</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="fiat" value="own-license">
-                                <div class="option-content">
-                                    <div class="option-title">Own Payment Institution License</div>
-                                    <div class="option-description">VASP holds separate BCB payment institution authorization</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="fiat" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">Crypto-Only Platform</div>
-                                    <div class="option-description">No fiat deposits/withdrawals — crypto-to-crypto only</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">PIX Integration Provider (Brazil)</label>
-                        <div class="form-description">
-                            If applicable — name of BCB-authorized institution providing PIX connectivity
-                        </div>
-                        <input type="text" class="form-input" id="pixProvider" placeholder="Provider name and BCB authorization number">
-                    </div>
-
-                    <!-- Yield/Staking -->
-                    <div class="form-group">
-                        <label class="form-label">Yield Generation / Staking Services</label>
-                        <div class="form-description">
-                            Does the platform offer interest/returns on deposited assets? (Art. 2º, XVI - Staking definition)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="yield" value="yes">
-                                <div class="option-content">
-                                    <div class="option-title">Yes — Offers Yield/Staking</div>
-                                    <div class="option-description">DeFi protocols, CeFi lending, or blockchain staking — requires risk disclosure</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="yield" value="no">
-                                <div class="option-content">
-                                    <div class="option-title">No Yield Services</div>
-                                    <div class="option-description">Non-custodial or custody-only without returns</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group" id="yield-detail">
-                        <label class="form-label">Yield Allocation Mechanism</label>
-                        <textarea class="form-textarea" id="yieldDetails" placeholder="Describe: DeFi protocols used (Aave, Compound, etc.), CeFi lenders, blockchain staking, user consent process, risk disclosure..."></textarea>
-                    </div>
-
-                    <!-- Navigation -->
                     <div class="form-navigation">
-                        <button class="btn" onclick="prevSection(1)">Previous</button>
-                        <button class="btn btn-primary" onclick="nextSection(3)">Continue to Compliance</button>
+                        <button class="btn" onclick="navigateSection(1)">Previous</button>
+                        <button class="btn btn-primary" onclick="navigateSection(3)">Continue to Section 3</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 3: Compliance & Controls -->
+            <!-- SECTION 3: Operational Structure & Asset Segregation -->
             <div class="section" id="section-3">
                 <div class="form-card">
                     <div class="section-header">
-                        <div class="section-number">Section 03/04</div>
-                        <div class="section-title">Compliance, Governance & Internal Controls</div>
-                        <div class="section-description">
-                            Assessment of AML/CFT framework, governance structure, cybersecurity posture, and risk management systems required under Chapters VI-VIII of Resolution 520.
+                        <div class="section-number">Section 03 / 06</div>
+                        <div class="section-title">Operational Structure & Asset Segregation</div>
+                        <div class="section-legal-ref">Res. BCB 520 (2025) — Art. 29-30, 73-78, 527-531, 569</div>
+                    </div>
+
+                    <table class="question-table">
+                        <!-- Q3.1 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.1
+                                    <span class="status-badge legal-ref">Art. 527-528</span>
+                                </div>
+                                <div class="question-title">Segregation of Financial Resources (Fiat)</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-1" value="own-accounts" data-field="fiatSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">VASP offers own accounts (if authorized)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-1" value="third-party" data-field="fiatSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">Contracted accounts via 3rd party authorized institution (BaaS)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-1" value="not-applicable" data-field="fiatSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">Not applicable — No fiat custody</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.2 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.2
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 529(I), 530</span>
+                                </div>
+                                <div class="question-title">Segregation of Virtual Assets (VAs)</div>
+                                <div class="question-context">
+                                    Client VAs must be in DISTINCT wallets from proprietary funds — BCB's highest priority requirement
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-2" value="yes-documented" data-field="vaSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Segregation implemented with documented policy</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-2" value="yes-undocumented" data-field="vaSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Technical segregation but policy incomplete</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-2" value="no" data-field="vaSegregation">
+                                        <div class="option-content">
+                                            <div class="option-title">No — Not implemented (BLOCKING ISSUE)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.3 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.3
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 481(XIII), 530(II)</span>
+                                </div>
+                                <div class="question-title">Proof of Reserves (POR) Mechanism</div>
+                                <div class="question-context">
+                                    Technical method to demonstrate VASP possesses the assets it declares on behalf of clients
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3" value="cryptographic" data-field="porMethod">
+                                        <div class="option-content">
+                                            <div class="option-title">Cryptographic Proofs (Merkle trees, ZK proofs)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3" value="third-party" data-field="porMethod">
+                                        <div class="option-content">
+                                            <div class="option-title">Third-Party Attestation Service</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3" value="blockchain" data-field="porMethod">
+                                        <div class="option-content">
+                                            <div class="option-title">On-Chain Verification (Blockchain explorers)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3" value="none" data-field="porMethod">
+                                        <div class="option-content">
+                                            <div class="option-title">Not implemented (BLOCKING ISSUE)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.3b POR Frequency -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.3b</div>
+                                <div class="question-title">POR Generation Frequency</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3b" value="realtime" data-field="porFrequency">
+                                        <div class="option-content">
+                                            <div class="option-title">Real-time / Continuous</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3b" value="daily" data-field="porFrequency">
+                                        <div class="option-content">
+                                            <div class="option-title">Daily</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3b" value="monthly" data-field="porFrequency">
+                                        <div class="option-content">
+                                            <div class="option-title">Monthly (Minimum compliance)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.3c POR Public Disclosure -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.3c</div>
+                                <div class="question-title">POR Public Disclosure</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3c" value="yes" data-field="porPublicDisclosure">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — POR publicly accessible</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-3c" value="no" data-field="porPublicDisclosure">
+                                        <div class="option-content">
+                                            <div class="option-title">No — Internal only</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.4 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.4
+                                    <span class="status-badge legal-ref">Art. 530(III), 531(§1º)</span>
+                                </div>
+                                <div class="question-title">POR Independent Audit (Biennial)</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-4" value="yes" data-field="porAudit">
+                                        <div class="option-content">
+                                            <div class="option-title">Biennial audit with reasonable assurance level scheduled</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-4" value="no" data-field="porAudit">
+                                        <div class="option-content">
+                                            <div class="option-title">Not planned</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.5 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.5
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 655(XII), 656(I, III)</span>
+                                </div>
+                                <div class="question-title">Custody Redundancy Mechanism (Backup) — For Custodians/Brokers</div>
+                                <div class="question-context">
+                                    <strong>CRITICAL CHECK:</strong> Redundant mechanism containing client data and private keys must be governed by Brazilian law and allow BCB supervisory access
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-5" value="yes-compliant" data-field="custodyRedundancy">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Brazilian law governed + BCB access confirmed</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-5" value="yes-noncompliant" data-field="custodyRedundancy">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — But does NOT meet BR law/BCB access requirements</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-5" value="no" data-field="custodyRedundancy">
+                                        <div class="option-content">
+                                            <div class="option-title">No redundancy mechanism</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-5" value="na" data-field="custodyRedundancy">
+                                        <div class="option-content">
+                                            <div class="option-title">Not applicable — Pure Intermediary (no custody)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.6 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.6
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 569(§3º), 479(V-VII)</span>
+                                </div>
+                                <div class="question-title">Private Key Management — Multiple/Segmented Keys in Different Locations</div>
+                                <div class="question-context">
+                                    Select all wallet types used in custody structure
+                                </div>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q3-6" value="cold" data-field="walletTypes">
+                                        <div class="option-content">
+                                            <div class="option-title">Cold Wallet (Offline — Disconnected from networks)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q3-6" value="hot" data-field="walletTypes">
+                                        <div class="option-content">
+                                            <div class="option-title">Hot Wallet (Online — Connected for immediate transactions)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q3-6" value="warm" data-field="walletTypes">
+                                        <div class="option-content">
+                                            <div class="option-title">Warm Wallet (Semi-offline — Additional security layers)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.7 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.7
+                                    <span class="status-badge legal-ref">Art. 670, 670(§2º)</span>
+                                </div>
+                                <div class="question-title">Stress Testing (Custodians/Brokers Only)</div>
+                                <div class="question-context">
+                                    Annual stress tests to evaluate system capacity + Results documented and archived for 5 years
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-7" value="yes" data-field="stressTesting">
+                                        <div class="option-content">
+                                            <div class="option-title">Annual testing scheduled</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-7" value="no" data-field="stressTesting">
+                                        <div class="option-content">
+                                            <div class="option-title">Not planned</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-7" value="na" data-field="stressTesting">
+                                        <div class="option-content">
+                                            <div class="option-title">Not applicable — Pure Intermediary</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q3.8 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q3.8
+                                    <span class="status-badge legal-ref">Art. 671(§5º)</span>
+                                </div>
+                                <div class="question-title">Staking Operations (Custodians/Brokers Only)</div>
+                                <div class="question-context">
+                                    BCB must be communicated with minimum 90 days' notice if staking operations offered
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-8" value="yes" data-field="stakingOperations">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Staking offered (90-day notification planned)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q3-8" value="no" data-field="stakingOperations">
+                                        <div class="option-content">
+                                            <div class="option-title">No — Staking not offered</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="info-box warning">
+                        <div class="info-box-title">⚠️ Asset Segregation — Regulatory Priority</div>
+                        <div class="info-box-text">
+                            Segregation of client assets (both fiat and VAs) is BCB's highest enforcement priority. Failure to implement = denial of authorization, fines, operational shutdown, potential criminal liability.
                         </div>
                     </div>
 
-                    <!-- AML/CFT Framework -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">AML/CFT Compliance Program Status</label>
-                        <div class="form-description">
-                            Requirements: PLD-FTP policy, compliance officer, customer due diligence, transaction monitoring, STR reporting (Art. 34-47)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="aml" value="full">
-                                <div class="option-content">
-                                    <div class="option-title">Fully Operational</div>
-                                    <div class="option-description">Documented policies, dedicated officer, automated monitoring, active STR filing</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="aml" value="partial">
-                                <div class="option-content">
-                                    <div class="option-title">Partially Implemented</div>
-                                    <div class="option-description">Basic KYC/KYB in place but policies require formalization or monitoring needs automation</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="aml" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">Not Implemented</div>
-                                    <div class="option-description">Critical — must be fully operational before BCB authorization</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label">KYC/KYB Provider</label>
-                            <input type="text" class="form-input" id="kycProvider" placeholder="e.g., Jumio, Onfido, Sum&Substance, in-house">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Transaction Monitoring System</label>
-                            <input type="text" class="form-input" id="monitoring" placeholder="e.g., Chainalysis, Elliptic, TRM Labs, in-house">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Designated Compliance Officer</label>
-                        <div class="form-description">
-                            Must be full-time dedicated role with direct board reporting line (Art. 34-35)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="complianceOfficer" value="yes">
-                                <div class="option-content">
-                                    <div class="option-title">Appointed and Active</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="complianceOfficer" value="no">
-                                <div class="option-content">
-                                    <div class="option-title">Not Yet Appointed</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Governance -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Board of Directors / Governance Structure</label>
-                        <div class="form-description">
-                            Mandatory for VASPs — minimum board composition and audit committee requirements (Art. 51-56)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="governance" value="full">
-                                <div class="option-content">
-                                    <div class="option-title">Fully Constituted</div>
-                                    <div class="option-description">Board of directors, audit committee, documented governance policies</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="governance" value="partial">
-                                <div class="option-content">
-                                    <div class="option-title">Partial Structure</div>
-                                    <div class="option-description">Board exists but committees or policies need formalization</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="governance" value="none">
-                                <div class="option-content">
-                                    <div class="option-title">Not Established</div>
-                                    <div class="option-description">Requires full implementation before authorization</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Cybersecurity -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Cybersecurity & Information Security</label>
-                        <div class="form-description">
-                            Mandatory CSIRT, incident response, penetration testing, and security certifications (Art. 61-66)
-                        </div>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="cyber" value="certified">
-                                <div class="option-content">
-                                    <div class="option-title">Certified & Audited</div>
-                                    <div class="option-description">ISO 27001, SOC 2, or equivalent + regular penetration testing + CSIRT operational</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="cyber" value="basic">
-                                <div class="option-content">
-                                    <div class="option-title">Basic Security Measures</div>
-                                    <div class="option-description">Security protocols in place but formal certification/audit pending</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="cyber" value="minimal">
-                                <div class="option-content">
-                                    <div class="option-title">Minimal Security</div>
-                                    <div class="option-description">High risk — BCB may defer authorization pending security improvements</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Cyber Insurance Coverage</label>
-                        <div class="form-description">
-                            Recommended but not mandatory — mitigates operational risk
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <input type="text" class="form-input" id="insurance" placeholder="Insurer name and policy number">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-input" id="coverage" placeholder="Coverage amount (USD)">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Risk Management -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Risk Management Framework (Art. 57-60)</label>
-                        <div class="form-description">
-                            Documented policies for market risk, credit risk, operational risk, liquidity risk, and legal/compliance risk
-                        </div>
-                        <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="risk" value="market">
-                                <div class="option-content">
-                                    <div class="option-title">Market Risk</div>
-                                    <div class="option-description">Crypto price volatility, FX exposure management</div>
-                                </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="risk" value="credit">
-                                <div class="option-content">
-                                    <div class="option-title">Credit Risk</div>
-                                    <div class="option-description">Counterparty risk from liquidity providers, custodians</div>
-                                </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="risk" value="operational">
-                                <div class="option-content">
-                                    <div class="option-title">Operational Risk</div>
-                                    <div class="option-description">System failures, fraud, process errors</div>
-                                </div>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="risk" value="liquidity">
-                                <div class="option-content">
-                                    <div class="option-title">Liquidity Risk</div>
-                                    <div class="option-description">Ability to meet withdrawal requests, reserve requirements</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Capital & Net Worth -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Capital & Net Worth Status</label>
-                        <div class="form-description">
-                            Minimum requirements vary by modality: Intermediary (R$ 2M/3M), Custodian (R$ 5M/10M), Broker (R$ 10M/20M)
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label class="form-label">Paid-In Capital (BRL)</label>
-                                <input type="text" class="form-input" id="capital" placeholder="Current paid-in capital">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Net Worth (BRL)</label>
-                                <input type="text" class="form-input" id="netWorth" placeholder="Current net worth / equity">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Capital Increase Required?</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="capitalNeed" value="compliant">
-                                <div class="option-content">
-                                    <div class="option-title">Meets Minimum Requirements</div>
-                                </div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="capitalNeed" value="increase">
-                                <div class="option-content">
-                                    <div class="option-title">Capital Increase Needed</div>
-                                    <div class="option-description">Must be completed before authorization process</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Navigation -->
                     <div class="form-navigation">
-                        <button class="btn" onclick="prevSection(2)">Previous</button>
-                        <button class="btn btn-primary" onclick="nextSection(4)">Review & Submit</button>
+                        <button class="btn" onclick="navigateSection(2)">Previous</button>
+                        <button class="btn btn-primary" onclick="navigateSection(4)">Continue to Section 4</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 4: Review & Submit -->
+            <!-- SECTION 4: Compliance, AML/CFT & International Controls -->
             <div class="section" id="section-4">
                 <div class="form-card">
                     <div class="section-header">
-                        <div class="section-number">Section 04/04</div>
-                        <div class="section-title">Summary & Engagement Objectives</div>
+                        <div class="section-number">Section 04 / 06</div>
+                        <div class="section-title">Compliance, AML/CFT & International Controls</div>
+                        <div class="section-legal-ref">Res. BCB 520/521 (2025)</div>
+                    </div>
+
+                    <table class="question-table">
+                        <!-- Q4.1 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.1
+                                    <span class="status-badge legal-ref">Art. 560(II-III)</span>
+                                </div>
+                                <div class="question-title">AML/CFT Policy & Controls (General)</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-1" value="yes" data-field="amlPolicy">
+                                        <div class="option-content">
+                                            <div class="option-title">5-year record keeping + suspicious transaction reporting operational</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-1" value="partial" data-field="amlPolicy">
+                                        <div class="option-content">
+                                            <div class="option-title">Partial implementation</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-1" value="no" data-field="amlPolicy">
+                                        <div class="option-content">
+                                            <div class="option-title">Not implemented</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q4.2 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.2
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 44 Res. 520</span>
+                                </div>
+                                <div class="question-title">Travel Rule Technological Readiness</div>
+                                <div class="question-context">
+                                    Capture & transmit FULL data: Name, Address, CPF/CNPJ, Account ID, VA Wallet ID
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-2" value="operational" data-field="travelRuleTech">
+                                        <div class="option-content">
+                                            <div class="option-title">Full data capture operational</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-2" value="development" data-field="travelRuleTech">
+                                        <div class="option-content">
+                                            <div class="option-title">Under development</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-2" value="no" data-field="travelRuleTech">
+                                        <div class="option-content">
+                                            <div class="option-title">Not implemented</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q4.3 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.3
+                                    <span class="status-badge legal-ref">Art. 696-698 Res. 520</span>
+                                </div>
+                                <div class="question-title">Travel Rule Implementation Phases — Awareness</div>
+                                <div class="question-context">
+                                    Stage I (National Market): <span id="stage1-date"></span><br>
+                                    Stage II (International Market): <span id="stage2-date"></span>
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-3" value="yes" data-field="travelRulePhases">
+                                        <div class="option-content">
+                                            <div class="option-title">Phased plan established</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-3" value="no" data-field="travelRulePhases">
+                                        <div class="option-content">
+                                            <div class="option-title">Not yet planned</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q4.4 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.4
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 699(III), 700</span>
+                                </div>
+                                <div class="question-title">Prohibited Mechanisms: Mixers/Tumblers/Bots</div>
+                                <div class="question-context">
+                                    Platform must explicitly prohibit anonymization tools designed to conceal transaction authors/beneficiaries
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-4" value="yes-monitored" data-field="mixersProhibited">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Banned with active technical monitoring</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-4" value="yes-policy" data-field="mixersProhibited">
+                                        <div class="option-content">
+                                            <div class="option-title">Yes — Policy only, no technical monitoring</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-4" value="no" data-field="mixersProhibited">
+                                        <div class="option-content">
+                                            <div class="option-title">No — Not addressed</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q4.5 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.5
+                                    <span class="status-badge legal-ref">Art. 91 Res. 520</span>
+                                </div>
+                                <div class="question-title">Foreign VASP Veto Strategy</div>
+                                <div class="question-context">
+                                    Starting <span id="veto-effective-date"></span>, cannot transact with foreign VASPs not authorized in Brazil
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-5" value="yes" data-field="foreignVaspVeto">
+                                        <div class="option-content">
+                                            <div class="option-title">BCB database check + blocking mechanism defined</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-5" value="no" data-field="foreignVaspVeto">
+                                        <div class="option-content">
+                                            <div class="option-title">Strategy not defined</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q4.6 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q4.6
+                                    <span class="status-badge legal-ref">Art. 723(III), 724(§1º, II), 726(§5º) Res. 521</span>
+                                </div>
+                                <div class="question-title">FX Activities & Unhosted Wallets Controls</div>
+                                <div class="question-context">
+                                    If conducting international payments, stablecoin trading, or transfers to/from auto-custody wallets: identify wallet owner + verify origin/destination
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-6" value="yes" data-field="unhostedWallets">
+                                        <div class="option-content">
+                                            <div class="option-title">VA analytics/KYC processes documented (Chainalysis, Elliptic, TRM Labs)</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-6" value="no" data-field="unhostedWallets">
+                                        <div class="option-content">
+                                            <div class="option-title">Not implemented</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q4-6" value="na" data-field="unhostedWallets">
+                                        <div class="option-content">
+                                            <div class="option-title">Not applicable — No FX/unhosted wallet activities</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form-navigation">
+                        <button class="btn" onclick="navigateSection(3)">Previous</button>
+                        <button class="btn btn-primary" onclick="navigateSection(5)">Continue to Section 5</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: Mandatory Transition Reporting -->
+            <div class="section" id="section-5">
+                <div class="form-card">
+                    <div class="section-header">
+                        <div class="section-number">Section 05 / 06</div>
+                        <div class="section-title">Mandatory Transition Reporting (Art. 88 Res. 520)</div>
                         <div class="section-description">
-                            Review collected information and define scope of legal services required for Brazilian market compliance.
+                            <strong>ONLY APPLICABLE IF "CURRENTLY ACTIVE" SELECTED IN Q1.5</strong>
                         </div>
                     </div>
 
-                    <!-- Summary Grid -->
-                    <div class="summary-grid" id="summaryContent">
-                        <!-- Will be populated by JavaScript -->
+                    <div class="info-box critical">
+                        <div class="info-box-title">⚠️ Applicability Check</div>
+                        <div class="info-box-text" id="transition-applicability">
+                            Loading applicability status based on Q1.5 response...
+                        </div>
                     </div>
 
-                    <!-- Service Scope -->
-                    <div class="form-group" style="margin-top: 3rem;">
-                        <label class="form-label form-label-required">Requested Legal Services</label>
-                        <div class="form-description">
-                            Select all applicable deliverables for this engagement
-                        </div>
+                    <table class="question-table">
+                        <!-- Q5.1 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q5.1
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 687(I)</span>
+                                </div>
+                                <div class="question-title">270-Day Authorization Deadline</div>
+                                <div class="question-context">
+                                    Must request authorization by: <span id="deadline-270"></span>
+                                </div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q5-1" value="yes" data-field="transitionDeadline">
+                                        <div class="option-content">
+                                            <div class="option-title">Authorization request scheduled within deadline</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q5-1" value="no" data-field="transitionDeadline">
+                                        <div class="option-content">
+                                            <div class="option-title">Not yet scheduled</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q5.2 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q5.2
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 690(b-c)</span>
+                                </div>
+                                <div class="question-title">DAILY Reporting Capability</div>
+                                <div class="question-context">
+                                    Starting from authorization request date, must submit DAILY:
+                                </div>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q5-2" value="balances" data-field="dailyReporting">
+                                        <div class="option-content">
+                                            <div class="option-title">Client/user account balances (fiat)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q5-2" value="vas" data-field="dailyReporting">
+                                        <div class="option-content">
+                                            <div class="option-title">Total VAs custodied (proprietary, client, national, foreign) by quantity/value</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q5.3 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q5.3
+                                    <span class="status-badge critical">Critical</span>
+                                    <span class="status-badge legal-ref">Art. 691(d-e)</span>
+                                </div>
+                                <div class="question-title">MONTHLY Reporting: POR & Staking</div>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q5-3" value="por" data-field="monthlyReporting">
+                                        <div class="option-content">
+                                            <div class="option-title">Monthly POR demonstrations (verifiable, discriminated by VA)</div>
+                                        </div>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="q5-3" value="staking" data-field="monthlyReporting">
+                                        <div class="option-content">
+                                            <div class="option-title">Monthly client VAs allocated to staking (if applicable)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Q5.4 -->
+                        <tr class="question-row">
+                            <td class="question-cell">
+                                <div class="question-number">Q5.4
+                                    <span class="status-badge legal-ref">Art. 689(III)(a)</span>
+                                </div>
+                                <div class="question-title">CCS (Client Registration System) Submission</div>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="q5-4" value="yes" data-field="ccsSubmission">
+                                        <div class="option-content">
+                                            <div class="option-title">Prepared to submit client info to CCS</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="q5-4" value="no" data-field="ccsSubmission">
+                                        <div class="option-content">
+                                            <div class="option-title">Not prepared</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form-navigation">
+                        <button class="btn" onclick="navigateSection(4)">Previous</button>
+                        <button class="btn btn-primary" onclick="navigateSection(6)">Review & Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: Review & Service Selection -->
+            <div class="section" id="section-6">
+                <div class="form-card">
+                    <div class="section-header">
+                        <div class="section-number">Section 06 / 06</div>
+                        <div class="section-title">Review & Requested Legal Services</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Requested Legal Services (Select all applicable)</label>
                         <div class="checkbox-group">
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="legal-opinion">
+                                <input type="checkbox" name="services" value="legal-opinion" data-field="requestedServices">
                                 <div class="option-content">
-                                    <div class="option-title">Comprehensive Legal Opinion</div>
-                                    <div class="option-description">25-35 page regulatory assessment covering all Res. 519/520/521 requirements, international benchmarking, risk analysis, and recommendations</div>
+                                    <div class="option-title">Comprehensive Legal Opinion (25-35 pages)</div>
+                                    <div class="option-description">Full regulatory analysis, risk assessment, compliance roadmap</div>
                                 </div>
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="gap-analysis">
+                                <input type="checkbox" name="services" value="gap-analysis" data-field="requestedServices">
                                 <div class="option-content">
-                                    <div class="option-title">Regulatory Gap Analysis</div>
-                                    <div class="option-description">Identification of non-conformities with prioritized remediation roadmap</div>
+                                    <div class="option-title">Gap Analysis & Remediation Roadmap</div>
+                                    <div class="option-description">Identify compliance gaps, prioritization, timeline</div>
                                 </div>
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="authorization">
+                                <input type="checkbox" name="services" value="authorization" data-field="requestedServices">
                                 <div class="option-content">
                                     <div class="option-title">BCB Authorization Process Support</div>
-                                    <div class="option-description">Preparation of documentation, filing, BCB interaction, and procedural representation (Res. 519)</div>
+                                    <div class="option-description">Res. 519 filing preparation, BCB liaison, Phase 1 & 2 support</div>
                                 </div>
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="policies">
+                                <input type="checkbox" name="services" value="policies" data-field="requestedServices">
                                 <div class="option-content">
                                     <div class="option-title">Compliance Policy Templates</div>
-                                    <div class="option-description">Customizable templates: AML/CFT manual, asset segregation policy, risk management framework, governance charter</div>
+                                    <div class="option-description">AML/CFT, Segregation, Travel Rule, Cybersecurity, etc.</div>
                                 </div>
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="due-diligence">
+                                <input type="checkbox" name="services" value="technical" data-field="requestedServices">
                                 <div class="option-content">
-                                    <div class="option-title">Third-Party Due Diligence</div>
-                                    <div class="option-description">Assessment of custodians, liquidity providers, payment service providers, and other critical vendors</div>
+                                    <div class="option-title">Technical Infrastructure Assessment</div>
+                                    <div class="option-description">POR methodology, custody architecture, private key management</div>
                                 </div>
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="services" value="ongoing">
+                                <input type="checkbox" name="services" value="transition" data-field="requestedServices">
                                 <div class="option-content">
-                                    <div class="option-title">Ongoing Regulatory Advisory</div>
-                                    <div class="option-description">Monthly retainer for compliance monitoring, regulatory updates, and ad-hoc consultations</div>
+                                    <div class="option-title">Transition Regime Support</div>
+                                    <div class="option-description">Daily/monthly reporting setup, CCS integration</div>
+                                </div>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="services" value="ongoing" data-field="requestedServices">
+                                <div class="option-content">
+                                    <div class="option-title">Ongoing Regulatory Advisory Retainer</div>
+                                    <div class="option-description">Continuous compliance monitoring, regulatory updates</div>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Timeline & Budget -->
-                    <div class="form-grid" style="margin-top: 2rem;">
-                        <div class="form-group">
-                            <label class="form-label form-label-required">Target Timeline</label>
-                            <select class="form-select" id="timeline">
-                                <option value="">Select urgency level</option>
-                                <option value="urgent">Urgent — Operate before Feb 2026 entry into force</option>
-                                <option value="standard">Standard — Authorization within 2026</option>
-                                <option value="extended">Extended — Authorization within 2027</option>
+                    <div class="form-group">
+                        <label class="form-label form-label-required">Timeline & Budget</label>
+                        <div class="form-grid">
+                            <select class="form-select" id="timeline" data-field="timeline">
+                                <option value="">Select timeline...</option>
+                                <option value="urgent">Urgent (before Feb 2026 entry)</option>
+                                <option value="transition">Transition window (270 days)</option>
+                                <option value="standard">Standard (2026-2027)</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Estimated Budget for Legal Services (USD)</label>
-                            <input type="text" class="form-input" id="budget" placeholder="Budget range or limit">
+                            <input type="text" class="form-input" id="budget" data-field="budget" placeholder="Estimated budget (USD)">
                         </div>
                     </div>
 
-                    <!-- Additional Notes -->
                     <div class="form-group">
-                        <label class="form-label">Additional Context or Specific Concerns</label>
-                        <textarea class="form-textarea" id="notes" placeholder="Any additional information that may be relevant to the assessment (ongoing litigation, previous regulatory issues, unique operational aspects, specific BCB interactions, etc.)"></textarea>
-                    </div>
-
-                    <!-- Contact -->
-                    <div class="form-group">
-                        <label class="form-label form-label-required">Primary Contact for Engagement</label>
+                        <label class="form-label form-label-required">Primary Contact</label>
                         <div class="form-grid-3">
-                            <input type="text" class="form-input" id="contactName" placeholder="Full name">
-                            <input type="text" class="form-input" id="contactTitle" placeholder="Title/Role">
-                            <input type="email" class="form-input" id="contactEmail" placeholder="Email address">
+                            <input type="text" class="form-input" id="contact-name" data-field="contactName" placeholder="Name">
+                            <input type="text" class="form-input" id="contact-title" data-field="contactTitle" placeholder="Title">
+                            <input type="email" class="form-input" id="contact-email" data-field="contactEmail" placeholder="Email">
                         </div>
                     </div>
 
-                    <div class="info-box" style="margin-top: 2rem;">
-                        <div class="info-box-title">Next Steps After Submission</div>
+                    <div class="info-box">
+                        <div class="info-box-title">📊 Data Export</div>
                         <div class="info-box-text">
-                            Upon receipt of this intake form, our team will:<br><br>
-                            <strong>Within 48 hours:</strong> Preliminary assessment of regulatory classification and critical gaps<br>
-                            <strong>Within 5 business days:</strong> Detailed scope of work, fee structure, and project timeline<br>
-                            <strong>Upon engagement:</strong> Deep-dive interviews, document review, and commencement of selected deliverables
+                            Upon submission, all responses will be exported as structured JSON for legal opinion database. Our team will contact you within 48 hours with preliminary assessment and proposal.
                         </div>
                     </div>
 
-                    <!-- Navigation -->
                     <div class="form-navigation">
-                        <button class="btn" onclick="prevSection(3)">Previous</button>
-                        <button class="btn btn-primary" onclick="submitForm()">Submit Intake Form</button>
+                        <button class="btn" onclick="navigateSection(5)">Previous</button>
+                        <button class="btn btn-primary" onclick="submitIntake()">Submit Complete Intake</button>
                     </div>
                 </div>
             </div>
@@ -1167,202 +1267,154 @@
     </div>
 
     <script>
-        // Navigation Functions
-        function nextSection(sectionNum) {
-            // Hide current section
+        // ========== DATE CALCULATIONS ==========
+        const BCB_ENTRY = new Date('2026-02-02');
+        const TRANSITION_DAYS = 270;
+        const TRAVEL_STAGE_I = 365;
+        const TRAVEL_STAGE_II = 730;
+        const FOREIGN_VETO = new Date('2026-10-30');
+        
+        function formatDate(date) {
+            return date.toLocaleDateString('pt-BR', {year: 'numeric', month: 'long', day: 'numeric'});
+        }
+        
+        function addDays(date, days) {
+            const result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+        
+        // Initialize dates
+        document.getElementById('date-entry').textContent = formatDate(BCB_ENTRY);
+        document.getElementById('date-transition').textContent = formatDate(addDays(BCB_ENTRY, TRANSITION_DAYS));
+        document.getElementById('date-travel1').textContent = formatDate(addDays(BCB_ENTRY, TRAVEL_STAGE_I));
+        document.getElementById('date-travel2').textContent = formatDate(addDays(BCB_ENTRY, TRAVEL_STAGE_II));
+        document.getElementById('date-veto').textContent = formatDate(FOREIGN_VETO);
+        document.getElementById('stage1-date').textContent = formatDate(addDays(BCB_ENTRY, TRAVEL_STAGE_I));
+        document.getElementById('stage2-date').textContent = formatDate(addDays(BCB_ENTRY, TRAVEL_STAGE_II));
+        document.getElementById('veto-effective-date').textContent = formatDate(FOREIGN_VETO);
+        document.getElementById('deadline-270').textContent = formatDate(addDays(BCB_ENTRY, TRANSITION_DAYS));
+        
+        // ========== CAPITAL CALCULATIONS (RES. CONJUNTA 14/2025) ==========
+        function calculateCapital() {
+            // Art. 9º - Custo
+            const costPerActivity = 2000000; // R$ 2M per operational activity category
+            const techInfra = 5000000; // R$ 5M if tech infrastructure services
+            
+            // Art. 10º §2º - Valores das atividades
+            const activityValues = {
+                service: 1000000,        // R$ 1M
+                custody: 3000000,        // R$ 3M
+                intermediation: 5000000, // R$ 5M
+                concession: 7000000      // R$ 7M
+            };
+            
+            const investmentRestricted = 5000000; // R$ 5M (restricted investment category)
+            const captationOwnResources = 0.6;    // 60% (recursos próprios factor)
+            
+            // Intermediária: Intermediação + Investimento Restrito
+            const intermediaryBase = costPerActivity + activityValues.intermediation + investmentRestricted;
+            const intermediaryMin = intermediaryBase * captationOwnResources;
+            
+            // Custodiante: Custódia + Investimento Restrito
+            const custodianBase = costPerActivity + activityValues.custody + investmentRestricted;
+            const custodianMin = custodianBase * captationOwnResources;
+            
+            // Corretora: Intermediação + Custódia + Investimento Restrito (2 activities)
+            const brokerBase = (costPerActivity * 2) + activityValues.intermediation + activityValues.custody + investmentRestricted;
+            const brokerMin = brokerBase * captationOwnResources;
+            
+            // Update UI
+            document.getElementById('capital-intermediary').textContent = 
+                `Min. Capital: R$ ${(intermediaryMin/1000000).toFixed(1)}M | Res. Conj. 14/2025 Art. 9º-10º`;
+            document.getElementById('capital-custodian').textContent = 
+                `Min. Capital: R$ ${(custodianMin/1000000).toFixed(1)}M | Res. Conj. 14/2025 Art. 9º-10º`;
+            document.getElementById('capital-broker').textContent = 
+                `Min. Capital: R$ ${(brokerMin/1000000).toFixed(1)}M | Res. Conj. 14/2025 Art. 9º-10º`;
+        }
+        calculateCapital();
+        
+        // ========== NAVIGATION ==========
+        function navigateSection(n) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.progress-step').forEach(s => s.classList.remove('active'));
             
-            // Show target section
-            document.getElementById(`section-${sectionNum}`).classList.add('active');
-            document.getElementById(`step-${sectionNum}-label`).classList.add('active');
+            document.getElementById(`section-${n}`).classList.add('active');
+            document.getElementById(`step-${n}`).classList.add('active');
+            document.getElementById('current-step-num').textContent = String(n).padStart(2, '0');
             
-            // Update counter
-            document.getElementById('current-step').textContent = String(sectionNum).padStart(2, '0');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // If section 4, populate summary
-            if (sectionNum === 4) {
-                populateSummary();
+            // Check transition applicability for Section 5
+            if (n === 5) {
+                const transitionStatus = document.querySelector('input[name="q1-5"]:checked')?.value;
+                const applicabilityEl = document.getElementById('transition-applicability');
+                
+                if (transitionStatus === 'active' || transitionStatus === 'foreign') {
+                    applicabilityEl.innerHTML = '<strong>✓ APPLICABLE:</strong> You selected "Currently Active" or "Foreign Entity" — complete all transition questions. Daily and monthly reporting obligations begin from authorization request date.';
+                } else {
+                    applicabilityEl.innerHTML = '<strong>✗ NOT APPLICABLE:</strong> You selected "New Market Entry" — skip this section or mark N/A. Transition reporting does not apply to new entrants.';
+                }
             }
-        }
-
-        function prevSection(sectionNum) {
-            nextSection(sectionNum);
-        }
-
-        // Dynamic field visibility
-        document.querySelectorAll('input[name="custodyModel"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const segregationQ = document.getElementById('segregation-question');
-                if (this.value === 'none') {
-                    segregationQ.style.display = 'none';
-                } else {
-                    segregationQ.style.display = 'block';
-                }
-            });
-        });
-
-        document.querySelectorAll('input[name="yield"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const yieldDetail = document.getElementById('yield-detail');
-                if (this.value === 'yes') {
-                    yieldDetail.style.display = 'block';
-                } else {
-                    yieldDetail.style.display = 'none';
-                }
-            });
-        });
-
-        // Radio/Checkbox visual feedback
-        document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                // Remove selected class from siblings
-                this.closest('.radio-group').querySelectorAll('.radio-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                // Add to selected
-                if (this.checked) {
-                    this.closest('.radio-option').classList.add('selected');
-                }
-            });
-        });
-
-        document.querySelectorAll('.checkbox-option input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    this.closest('.checkbox-option').classList.add('selected');
-                } else {
-                    this.closest('.checkbox-option').classList.remove('selected');
-                }
-            });
-        });
-
-        // Populate Summary
-        function populateSummary() {
-            const summaryContent = document.getElementById('summaryContent');
             
-            // Collect form data
-            const data = {
-                companyName: document.getElementById('companyName').value || 'Not provided',
-                jurisdiction: document.getElementById('jurisdiction').selectedOptions[0]?.text || 'Not provided',
-                taxId: document.getElementById('taxId').value || 'Not provided',
-                structure: document.querySelector('input[name="structure"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                brazilOps: document.querySelector('input[name="brazilOps"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                licenses: document.getElementById('licenses').value || 'None disclosed',
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        // ========== VISUAL FEEDBACK ==========
+        document.querySelectorAll('.radio-option input').forEach(input => {
+            input.addEventListener('change', function() {
+                const group = this.closest('.radio-group');
+                group.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+                if (this.checked) this.closest('.radio-option').classList.add('selected');
+            });
+        });
+        
+        document.querySelectorAll('.checkbox-option input').forEach(input => {
+            input.addEventListener('change', function() {
+                this.closest('.checkbox-option').classList.toggle('selected', this.checked);
+            });
+        });
+        
+        // ========== DATA COLLECTION & SUBMIT ==========
+        function submitIntake() {
+            const data = {};
+            
+            // Collect all form data
+            document.querySelectorAll('[data-field]').forEach(el => {
+                const field = el.getAttribute('data-field');
                 
-                modalities: Array.from(document.querySelectorAll('input[name="modality"]:checked')).map(cb => 
-                    cb.nextElementSibling.querySelector('.option-title').textContent
-                ).join(', ') || 'Not selected',
-                
-                custodyModel: document.querySelector('input[name="custodyModel"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                segregation: document.querySelector('input[name="segregation"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                
-                aml: document.querySelector('input[name="aml"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                governance: document.querySelector('input[name="governance"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                cyber: document.querySelector('input[name="cyber"]:checked')?.nextElementSibling?.querySelector('.option-title')?.textContent || 'Not selected',
-                
-                capital: document.getElementById('capital').value || 'Not provided',
-                netWorth: document.getElementById('netWorth').value || 'Not provided',
-                
-                services: Array.from(document.querySelectorAll('input[name="services"]:checked')).map(cb => 
-                    cb.nextElementSibling.querySelector('.option-title').textContent
-                ).join(', ') || 'Not selected'
+                if (el.type === 'radio') {
+                    if (el.checked) data[field] = el.value;
+                } else if (el.type === 'checkbox') {
+                    if (!data[field]) data[field] = [];
+                    if (el.checked) data[field].push(el.value);
+                } else if (el.tagName === 'SELECT') {
+                    if (el.value) data[field] = el.value;
+                } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.value) data[field] = el.value;
+                }
+            });
+            
+            // Add metadata
+            data._metadata = {
+                submittedAt: new Date().toISOString(),
+                formVersion: '2.0-optimized',
+                resolutionBasis: ['BCB 519/2025', 'BCB 520/2025', 'BCB 521/2025', 'Conjunta CMN/BCB 14/2025']
             };
             
-            // Build summary HTML
-            summaryContent.innerHTML = `
-                <div class="summary-section">
-                    <div class="summary-section-title">Corporate Structure</div>
-                    <div class="summary-item">
-                        <div class="summary-label">Legal Entity</div>
-                        <div class="summary-value">${data.companyName}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Jurisdiction</div>
-                        <div class="summary-value">${data.jurisdiction}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Tax ID</div>
-                        <div class="summary-value">${data.taxId}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Structure</div>
-                        <div class="summary-value">${data.structure}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Brazil Operations</div>
-                        <div class="summary-value">${data.brazilOps}</div>
-                    </div>
-                </div>
-
-                <div class="summary-section">
-                    <div class="summary-section-title">Operational Model</div>
-                    <div class="summary-item">
-                        <div class="summary-label">VASP Modalities</div>
-                        <div class="summary-value">${data.modalities}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Custody Model</div>
-                        <div class="summary-value">${data.custodyModel}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Asset Segregation</div>
-                        <div class="summary-value">${data.segregation}</div>
-                    </div>
-                </div>
-
-                <div class="summary-section">
-                    <div class="summary-section-title">Compliance Posture</div>
-                    <div class="summary-item">
-                        <div class="summary-label">AML/CFT Program</div>
-                        <div class="summary-value">${data.aml}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Governance</div>
-                        <div class="summary-value">${data.governance}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Cybersecurity</div>
-                        <div class="summary-value">${data.cyber}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Capital (BRL)</div>
-                        <div class="summary-value">${data.capital}</div>
-                    </div>
-                    <div class="summary-item">
-                        <div class="summary-label">Net Worth (BRL)</div>
-                        <div class="summary-value">${data.netWorth}</div>
-                    </div>
-                </div>
-
-                <div class="summary-section">
-                    <div class="summary-section-title">Engagement Scope</div>
-                    <div class="summary-item">
-                        <div class="summary-label">Requested Services</div>
-                        <div class="summary-value">${data.services}</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Form Submission
-        function submitForm() {
-            // In production, this would send data to backend
-            alert('Form submitted successfully!\n\nOur team will review your intake and contact you within 48 hours with a preliminary assessment.');
+            // Log structured data
+            console.log('=== STRUCTURED DATA FOR LEGAL OPINION ===');
+            console.log(JSON.stringify(data, null, 2));
             
-            // Could also download as JSON, send via email API, etc.
-            console.log('Form data ready for submission');
+            // Download as JSON
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `vasp-intake-${data.legalEntityName || 'unnamed'}-${Date.now()}.json`;
+            link.click();
+            
+            alert('✓ Intake submitted successfully!\n\nStructured data has been:\n• Logged to console\n• Downloaded as JSON file\n\nOur legal team will contact you within 48 hours with preliminary assessment and proposal.');
         }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial visibility states
-            document.getElementById('segregation-question').style.display = 'block';
-            document.getElementById('yield-detail').style.display = 'none';
-        });
     </script>
 </body>
 </html>
